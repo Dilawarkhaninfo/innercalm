@@ -1,0 +1,29 @@
+{% extends "form/base.html" %}
+{% load static %}
+{% block content %}
+<div class="dx-main mt-5">
+    <div class="dx-box-1 pb-100 bg-grey-6 mt-5">
+        <div class="container">
+            <div class="row vertical-gap md-gap">
+                <div class="col-lg-12">
+                    <h2 class="h4">Post A New Topic</h2>
+                    <div class="dx-box mt-55">
+                        <form action="" method="POST" class="dx-form mt-50 mb-45">
+                            <div class="row vertical-gap">
+                                <div class="col-12">
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    <div class="text-end">
+                                        <input type="submit" class="btn appointment-btn btn-primary dx-btn dx-btn-lg"
+                                            value="Add New Post">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

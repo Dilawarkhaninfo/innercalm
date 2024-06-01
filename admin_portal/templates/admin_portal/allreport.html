@@ -1,0 +1,597 @@
+<!-- website/templates/website/home.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reports || InnerCalm</title>
+
+
+    <!-- Favicons -->
+
+    <link rel="stylesheet" href="{% static 'website/img/favicon.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'website/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="{% static 'website/vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/animate.css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/boxicons/css/boxicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/glightbox/css/glightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/remixicon/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/swiper/swiper-bundle.min.css' %}">
+
+    <!-- Template Main CSS File -->
+
+    <link rel="stylesheet" href="{% static 'website/css/admin_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/datatables.css' %}">
+</head>
+
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="primary-bg shadow border-end " id="sidebar-wrapper">
+            <div class="text-center primary-text bg-blue-color fs-4 fw-semibold text-uppercase border-bottom">
+                <a href="{% url 'website:home' %}">
+                    <img src="{% static 'website/img/blacklogo2.png' %}" class="py-3" width="150" height="auto" alt="">
+                </a>
+            </div>
+            <ul class="navbar-nav sidebar_list">
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a href="{% url 'admin_portal:home' %}" class="text-decoration-none nav-link px-2">
+                        <span><i class="fas fa-tachometer-alt me-2"></i></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between"
+                        data-bs-toggle="collapse" href="#collapseExample" onclick="toggleArrow()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-users me-2 size"></i>All Users</span>
+                        <span id="myArrow1"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav mt-1" id="collapseExample">
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:alluser' %}"
+                                class="text-decoration-none text-capitalize nav-link px-2">
+                                <i class="fa-solid fa-person-chalkboard me-2 size"></i>View All Users</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between"
+                        data-bs-toggle="collapse" href="#collapseSchedular" onclick="toggleArrow1()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-clipboard-list me-2 size"></i>Appointments</span>
+                        <span id="myArrow2"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav mt-1" id="collapseSchedular">
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:allappointments' %}"
+                                class="text-decoration-none nav-link px-2">
+                                <i class="fa-solid fa-file-shield me-2 size"></i>View All Appointments</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between"
+                        data-bs-toggle="collapse" href="#collapseadmin" onclick="toggleArrow2()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-user-doctor me-2 size"></i>Counselors</span>
+                        <span id="myArrow3"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav" id="collapseadmin">
+                        <li class="nav-item px-2 py-0 mt-1">
+                            <a href="{% url 'admin_portal:allcounselors' %}"
+                                class="text-decoration-none nav-link px-2"><i class="fas fa-users me-2 size"></i>View
+                                All Counselors</a>
+                        </li>
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:addcounselors' %}" class="text-decoration-none nav-link px-2">
+                                <i class="fa-solid fa-user-plus me-2 size"></i>Add New Counselor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between"
+                        data-bs-toggle="collapse" href="#collapseanalytics" onclick="toggleArrow3()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-cubes
+                         me-2 size"></i>Resources</span>
+                        <span id="myArrow4"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav mt-1" id="collapseanalytics">
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:allresources' %}" class="text-decoration-none nav-link px-2">
+                                <i class="fa-regular fa-credit-card me-2 size"></i>View All Resources</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between active"
+                        data-bs-toggle="collapse" href="#collapseanalytics4" onclick="toggleArrow4()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-file me-2 size"></i>Reports</span>
+                        <span id="myArrow4"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav mt-1 " id="collapseanalytics4">
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:allreports' %}"
+                                class="text-decoration-none nav-link px-2 active">
+                                <i class="fa-regular fa-file-alt me-2 size"></i>View All Report</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between"
+                        data-bs-toggle="collapse" href="#collapseanalytics5" onclick="toggleArrow5()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-chart-bar me-2 size"></i>Analytics</span>
+                        <span id="myArrow4"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav mt-1" id="collapseanalytics5">
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:viewanalytics' %}" class="text-decoration-none nav-link px-2">
+                                <i class="fas fa-chart-area me-2 size"></i>Data Visualization</a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a class="text-decoration-none nav-link px-2 d-flex justify-content-between"
+                        data-bs-toggle="collapse" href="#collapseanalytics7" onclick="toggleArrow7()" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <span><i class="fa-solid fa-gear me-2 size"></i>Settings</span>
+                        <span id="myArrow4"><i class="fas fa-angle-right"></i></span>
+                    </a>
+                    <ul class="collapse navbar-nav mt-1" id="collapseanalytics7">
+                        <li class="nav-item px-2 py-0">
+                            <a href="{% url 'admin_portal:settings' %}" class="text-decoration-none nav-link px-2">
+                                <i class="fas fa-user-gear me-2 size"></i>General Settings</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item px-2 py-0 mt-1">
+                    <a href="{% url 'accounts:logout' %}" class="text-decoration-none nav-link px-2">
+                        <span><i class="fas fa-power-off me-2"></i></span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <!-- navbar start from here -->
+            <header class="">
+                <nav class="bg-blue custom_nav">
+                    <div class="container-fluid mt-1">
+                        <div class="row g-2 align-items-center justify-content-between">
+                            <div class="col-4 col-sm-4 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                <div class="d-flex align-items-center text-white">
+                                    <i class="fas fa-sliders-h fs-4 me-3" style="color: #fff;" id="menu-toggle"></i>
+                                </div>
+                            </div>
+                            <div class="col-8 col-sm-8 col-md-6 col-lg-6 col-xl-6 col-xxl-6 text-end">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <div class="dropdown">
+                                        <button class="btn p-0 border-0" type="button" id="dropdownMenuButton1"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span><i class="fas fa-bell text-light"></i></span>
+                                            </div>
+                                        </button>
+                                        <ul class="dropdown-menu" style="width: 300px"
+                                            aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <div
+                                                    class="d-flex align-items-center justify-content-between pt-2 px-3">
+                                                    <span class="mb-0 text-capitalize fs-14">notifications</span>
+                                                    <a href="" class="text-decoration-none text-capitalize fs-12">
+                                                        marked all as read
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <hr>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="fs-13 text-capitalize text-secondary ps-3">today</span>
+                                                    <a class="dropdown-item fs-14 dropitemone d-flex justify-content-between py-2"
+                                                        href="#">
+                                                        <div class="d-flex align-items-start">
+                                                            <span
+                                                                class="text-capitalize circlewhite bg-secondary text-white">
+                                                                amc
+                                                            </span>
+                                                            <span class="text-capitalize ps-2 fs-12 text-wrap">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                                elit.
+                                                            </span>
+                                                        </div>
+                                                        <p class="mb-0 fs-12 text-secondary">2 min</p>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <span
+                                                        class="fs-13 text-capitalize text-secondary ps-3">yesterday</span>
+                                                    <a class="dropdown-item fs-14 dropitemone d-flex justify-content-between py-2"
+                                                        href="#">
+                                                        <div class="d-flex align-items-start">
+                                                            <span
+                                                                class="text-capitalize circlewhite bg-secondary text-white">
+                                                                amc
+                                                            </span>
+                                                            <span class="text-capitalize ps-2 fs-12 text-wrap">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                                elit.
+                                                            </span>
+                                                        </div>
+                                                        <p class="mb-0 fs-12 text-secondary">2 min</p>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <span class="fs-13 text-capitalize text-secondary ps-3">today</span>
+                                                    <a class="dropdown-item fs-14 dropitemone d-flex justify-content-between py-2"
+                                                        href="#">
+                                                        <div class="d-flex align-items-start">
+                                                            <span
+                                                                class="text-capitalize circlewhite bg-secondary text-white">
+                                                                amc
+                                                            </span>
+                                                            <span class="text-capitalize ps-2 fs-12 text-wrap">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                                elit.
+                                                            </span>
+                                                        </div>
+                                                        <p class="mb-0 fs-12 text-secondary">2 min</p>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="dropdown">
+                                        <button class="btn p-0 border-0 " type="button" id="dropdownMenuButton1"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <div class="d-flex align-items-center ms-3">
+                                                <span><i class="fas fa-user-circle text-light fs-2"></i></span>
+                                            </div>
+                                        </button>
+                                        <ul class="dropdown-menu lh-sm" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item fs-14 dropitem d-flex align-items-center"
+                                                    href="{% url 'admin_portal:alluser' %}">
+                                                    <span>
+                                                        <i class="fas fa-user"></i>
+                                                    </span>
+                                                    <span class="text-capitalize p-2">
+                                                        My profile
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item fs-14 dropitem d-flex align-items-center"
+                                                    href="{% url 'admin_portal:settings' %}">
+                                                    <span>
+                                                        <i class="fas fa-gear"></i>
+                                                    </span>
+                                                    <span class="text-capitalize p-2">
+                                                        Settings
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item fs-14 dropitem d-flex align-items-center"
+                                                    href="{% url 'accounts:logout' %}">
+                                                    <span>
+                                                        <i class="fas fa-power-off"></i>
+                                                    </span>
+                                                    <span class="text-capitalize p-2">
+                                                        Logout
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!-- navbar end here -->
+            <div class="container-fluid px-4">
+                <div class="col-12">
+                    <div class="card border-0">
+                        <div class="card-body px-0">
+                            <h4 class="text-orange mb-3">List of All Reports</h4>
+                            <div class="row g-3">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="reports-table">
+                                                    <thead class="bg_orange text-light fw-semibold">
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Report Name</th>
+                                                            <th>Date Range</th>
+                                                            <th>Metrics</th>
+                                                            <th>Filters</th>
+                                                            <th>Grouping</th>
+                                                            <th>Sorting</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Monthly Performance Report</td>
+                                                            <td>Monthly</td>
+                                                            <td>Website Traffic, Appointment Statistics, Client
+                                                                Satisfaction</td>
+                                                            <td>Counselor Name, Appointment Status</td>
+                                                            <td>Counselor</td>
+                                                            <td>Chronological Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Weekly Engagement Report</td>
+                                                            <td>Weekly</td>
+                                                            <td>Client Interaction, Session Attendance, Feedback Ratings
+                                                            </td>
+                                                            <td>Client Name, Session Type</td>
+                                                            <td>Client</td>
+                                                            <td>Descending Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Financial Summary Report</td>
+                                                            <td>Quarterly</td>
+                                                            <td>Revenue, Expenses, Profit Margin</td>
+                                                            <td>Financial Year, Expense Category</td>
+                                                            <td>None</td>
+                                                            <td>Ascending Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>Client Satisfaction Survey Results</td>
+                                                            <td>Custom Date Range</td>
+                                                            <td>Survey Scores, Comments</td>
+                                                            <td>Survey Date, Counselor Name</td>
+                                                            <td>Survey Date</td>
+                                                            <td>Alphabetical Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5</td>
+                                                            <td>Appointment Attendance Report</td>
+                                                            <td>Monthly</td>
+                                                            <td>Appointment Date, Client Attendance</td>
+                                                            <td>Appointment Type, Counselor Name</td>
+                                                            <td>Appointment Type</td>
+                                                            <td>Chronological Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>6</td>
+                                                            <td>Referral Source Analysis Report</td>
+                                                            <td>Yearly</td>
+                                                            <td>Referral Channel, Number of Referrals</td>
+                                                            <td>Referral Date, Referrer Name</td>
+                                                            <td>Referral Channel</td>
+                                                            <td>Descending Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>7</td>
+                                                            <td>Inventory Management Report</td>
+                                                            <td>Quarterly</td>
+                                                            <td>Product Inventory, Sales Trends</td>
+                                                            <td>Product Category, Inventory Level</td>
+                                                            <td>Product Category</td>
+                                                            <td>Ascending Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>8</td>
+                                                            <td>Training Session Feedback Report</td>
+                                                            <td>Custom Date Range</td>
+                                                            <td>Participant Feedback Scores, Comments</td>
+                                                            <td>Training Session Date, Trainer Name</td>
+                                                            <td>Training Session Date</td>
+                                                            <td>Alphabetical Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>9</td>
+                                                            <td>Project Progress Report</td>
+                                                            <td>Weekly</td>
+                                                            <td>Task Completion Percentage, Milestone Achievements</td>
+                                                            <td>Project Name, Task Owner</td>
+                                                            <td>Project Name</td>
+                                                            <td>Chronological Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>10</td>
+                                                            <td>Customer Support Ticket Report</td>
+                                                            <td>Monthly</td>
+                                                            <td>Ticket Volume, Response Time</td>
+                                                            <td>Customer Name, Ticket Status</td>
+                                                            <td>None</td>
+                                                            <td>Descending Order</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="#viewModal" data-bs-toggle="modal"
+                                                                        class="btn btn-main">
+                                                                        <span><i class="fas fa-eye"></i></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-main" id="viewModalLabel">Projects Details</h5>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Review ID:</strong> 10132</p>
+                    <p><strong>Product Name:</strong> Necklace</p>
+                    <p><strong>Customer Name:</strong> Alice Johnson</p>
+                    <p><strong>Vendor Name:</strong> Gemstone Treasures</p>
+                    <p><strong>Review:</strong> I'm very satisfied with the quality Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Omnis, ratione?</p>
+                    <p><strong>Start Date:</strong> 23-08-88</p>
+                    <p><strong>End Date:</strong> 23-08-88</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-main px-5" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="{% static 'website/js/app.js' %}"></script>
+    <script src="{% static 'website/js/datatables.js' %}"></script>
+    <script src="{% static 'website/js/jquery.multiselect.js' %}"></script>
+    <script src="{% static 'website/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script>
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#reports-table').DataTable({
+                "language": {
+                    "paginate": {
+                        "previous": '<i class="fa-solid fa-chevron-left p-5px"></i>',
+                        "next": '<i class="fa-solid fa-chevron-right p-5px"></i>',
+                    },
+                    "lengthMenu": "",
+                    search: "",
+                    searchPlaceholder: "Search..."
+                },
+
+                "ordering": true
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>

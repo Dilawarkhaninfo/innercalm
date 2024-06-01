@@ -1,0 +1,233 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Counselors || InnerCalm</title>
+
+    <!-- Favicons -->
+    <style>
+      body {
+        margin-top: 20px;
+      }
+      .panel-title {
+        display: inline;
+        font-weight: bold;
+      }
+      .checkbox.pull-right {
+        margin: 0;
+      }
+      .pl-ziro {
+        padding-left: 0px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="{% static 'website/img/favicon.png' %}"
+      rel="icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/img/apple-touch-icon.png' %}"
+      rel="apple-touch-icon"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/fontawesome-free/css/all.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/animate.css/animate.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/boxicons/css/boxicons.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/glightbox/css/glightbox.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/remixicon/remixicon.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'website/vendor/swiper/swiper-bundle.min.css' %}"
+    />
+
+    <!-- Template Main CSS File -->
+
+    <link rel="stylesheet" href="{% static 'website/css/admin_styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'website/css/datatables.css' %}" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Payment Details</h3>
+              <div class="checkbox pull-right">
+                <label>
+                  <input type="checkbox" />
+                  Remember
+                </label>
+              </div>
+            </div>
+            <div class="panel-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="cardNumber"> CARD NUMBER</label>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cardNumber"
+                      placeholder="Valid Card Number"
+                      required
+                      autofocus
+                    />
+                    <span class="input-group-addon"
+                      ><span class="glyphicon glyphicon-lock"></span
+                    ></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-7 col-md-7">
+                    <div class="form-group">
+                      <label for="expityMonth"> EXPIRY DATE</label>
+                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="expityMonth"
+                          placeholder="MM"
+                          required
+                        />
+                      </div>
+                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="expityYear"
+                          placeholder="YY"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-5 col-md-5 pull-right">
+                    <div class="form-group">
+                      <label for="cvCode"> CV CODE</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="cvCode"
+                        placeholder="CV"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+              <a href="#"
+                ><span class="badge pull-right"
+                  ><span class="glyphicon glyphicon-usd"></span>4200</span
+                >
+                Final Payment</a
+              >
+            </li>
+          </ul>
+          <br />
+          <a
+            href="http://127.0.0.1:8000/clients_portal/home/"
+            class="btn btn-success btn-lg btn-block"
+            role="button"
+            >Pay</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="{% static 'website/js/app.js' %}"></script>
+    <script src="{% static 'website/js/datatables.js' %}"></script>
+    <script src="{% static 'website/js/jquery.multiselect.js' %}"></script>
+    <script src="{% static 'website/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- <script>
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script> -->
+    <script>
+      const getUserDataUrl =
+        "{% url 'clients_portal:get_user_data' userId=0 %}";
+    </script>
+
+    <script>
+      function loadUserData(userId) {
+        $.ajax({
+          url: getUserDataUrl + userId,
+          type: "GET",
+          success: function (data) {
+            $("#viewModalLabel").text("Details for " + data.full_name);
+            $("#modal-body-username").text("Username: " + data.username);
+            $("#modal-body-email").text("Email: " + data.email);
+            $("#modal-body-age").text("Age: " + data.age);
+            $("#modal-body-gender").text("Gender: " + data.gender);
+            $("#modal-body-lang").text("Language: " + data.lang);
+            $("#modal-body-location").text("Location: " + data.location);
+            $("#modal-body-phone").text("Phone: " + data.phone);
+            $("#viewModal").modal("show");
+          },
+          error: function (xhr, status, error) {
+            console.error(error);
+          },
+        });
+      }
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#counselor-table").DataTable({
+          language: {
+            paginate: {
+              previous: '<i class="fa-solid fa-chevron-left p-5px"></i>',
+              next: '<i class="fa-solid fa-chevron-right p-5px"></i>',
+            },
+            lengthMenu: "",
+            search: "",
+            searchPlaceholder: "Search...",
+          },
+
+          ordering: true,
+        });
+      });
+    </script>
+  </body>
+</html>

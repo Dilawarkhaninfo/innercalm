@@ -1,0 +1,437 @@
+<!-- website/templates/website/home.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services || InnerCalm</title>
+
+
+    <!-- Favicons -->
+
+    <link rel="stylesheet" href="{% static 'website/img/favicon.png' %}" rel="icon">
+    <link rel="stylesheet" href="{% static 'website/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="{% static 'website/vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/animate.css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/boxicons/css/boxicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/glightbox/css/glightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/remixicon/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'website/vendor/swiper/swiper-bundle.min.css' %}">
+
+    <!-- Template Main CSS File -->
+
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/styles.css' %}">
+</head>
+
+<body>
+
+
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex justify-content-between">
+            <div class="contact-info d-flex align-items-center">
+                <i class="bi bi-envelope"></i> <a href="mailto:contact@innercalm.com">contact@innercalm.com</a>
+                <i class="bi bi-phone"></i> +92 340 1417862
+            </div>
+            <div class="d-none d-lg-flex social-links align-items-center">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto">
+                <a href="{% url 'website:home' %}" class="logo me-auto">
+                    <img src="{% static 'website/img/blacklogo2.png' %}" alt="" class="img-fluid">
+                </a>
+            </h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto" href="{% url 'website:home' %}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'website:about' %}">About</a></li>
+                    <li class="dropdown">
+                        <a class="" href="{% url 'admin_portal:form_index' %}"><span>Forms</span> <i
+                                class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{% url 'admin_portal:form_index' %}">Froms Community</a></li>
+                            <li><a href="{% url 'admin_portal:user-post' %}">Post New Topic</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="{% url 'website:counselors' %}">Counselors</a></li>
+                    <li><a class="nav-link scrollto active" href="{% url 'website:services' %}">Our Services</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'website:contact' %}">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'accounts:logout' %}" class="appointment-btn scrollto"><span
+                    class="d-none d-md-inline">Logout</span></a>
+            {% else %}
+            <a href="{% url 'accounts:main' %}" class="appointment-btn scrollto"><span
+                    class="d-none d-md-inline">Login</span></a>
+            {% endif %}
+
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Services</h2>
+                <ol>
+                    <li><a href="{% url 'website:home' %}">Home</a></li>
+                    <li>Services</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Explore the range of services we offer to support your mental well-being journey.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <a href="{% url 'accounts:login' %}">
+                        <div class="">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                                <h4><a href="{% url 'accounts:login' %}">Counseling Sessions</a></h4>
+                                <p>Personalized counseling sessions with qualified counselors for mental health
+                                    support.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <a href="{% url 'accounts:login' %}">
+                        <div class="">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-pills"></i></div>
+                                <h4><a href="{% url 'accounts:login' %}">Anxiety Quizzes</a></h4>
+                                <p>Assess your anxiety levels and receive recommendations through AI-generated
+                                    quizzes.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <a href="{% url 'accounts:login' %}">
+                        <div class="">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                                <h4><a href="{% url 'accounts:login' %}">Community Support</a></h4>
+                                <p>Engage in a supportive community, share experiences, and seek advice anonymously.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <a href="{% url 'accounts:login' %}">
+                        <div class="">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-dna"></i></div>
+                                <h4><a href="{% url 'accounts:login' %}">Content Recommendations</a></h4>
+                                <p>Receive personalized content recommendations based on your preferences and needs.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <a href="{% url 'accounts:login' %}">
+                        <div class="">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                                <h4><a href="{% url 'accounts:login' %}">Educational Materials</a></h4>
+                                <p>Access educational resources and materials to enhance your mental health
+                                    awareness.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <a href="{% url 'accounts:login' %}">
+                        <div class="">
+                            <div class="icon-box">
+                                <div class="icon"><i class="fas fa-notes-medical"></i></div>
+                                <h4><a href="{% url 'accounts:login' %}">Resource Management</a></h4>
+                                <p>Upload, manage, and access mental health resources for continuous support.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section id="departments" class="departments">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Features</h2>
+                <p>Explore the key features that InnerCalm offers to support your mental well-being journey.</p>
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-lg-3">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Individual
+                                Counseling</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Group Therapy Sessions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Online Counseling</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Anxiety Quiz</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Content Recommendations</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="tab-1">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Individual Counseling</h3>
+                                    <p class="fst-italic">Take a step towards self-discovery and healing.</p>
+                                    <p>Individual counseling sessions provide personalized support tailored to your
+                                        unique needs. Our experienced counselors offer a safe and confidential space
+                                        to explore your thoughts, emotions, and challenges. Through empathetic
+                                        listening and evidence-based techniques, we help you develop coping
+                                        strategies, build resilience, and foster personal growth.</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{% static 'website/img/features/IndividualCounseling.png' %}" alt=""
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-2">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Group Therapy Sessions</h3>
+                                    <p class="fst-italic">Join a supportive community for shared healing and growth.
+                                    </p>
+                                    <p>Group therapy sessions offer a collaborative environment where individuals
+                                        with similar experiences come together to share, learn, and support one
+                                        another. Led by skilled therapists, these sessions provide opportunities for
+                                        interpersonal exploration, empathy building, and collective problem-solving.
+                                        Engage in meaningful interactions, gain insights from diverse perspectives,
+                                        and enhance your coping skills within a supportive group setting.</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{% static 'website/img/features/GroupTherapySessions.png' %}" alt=""
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-3">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Online Counseling</h3>
+                                    <p class="fst-italic">Access professional support and guidance from the comfort
+                                        of your home.</p>
+                                    <p>Experience the benefits of confidential and convenient online counseling
+                                        services. Connect with licensed counselors through secure platforms to
+                                        address your mental health concerns, receive personalized therapy sessions,
+                                        and explore effective coping strategies. Whether you're facing anxiety,
+                                        depression, or stress, online counseling offers a flexible and accessible
+                                        way to prioritize your well-being.</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{% static 'website/img/features/OnlineCounseling.png' %}" alt=""
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-4">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Anxiety Quiz</h3>
+                                    <p class="fst-italic">Assess your anxiety levels and gain insights into managing
+                                        stress effectively.</p>
+                                    <p>Take our interactive anxiety quiz designed to help you understand your
+                                        anxiety levels and identify potential areas of concern. Through a series of
+                                        questions and evaluations, gain valuable insights into your mental
+                                        well-being and receive recommendations for managing stress and improving
+                                        your overall quality of life.</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{% static 'website/img/features/AnxietyQuiz.png' %}" alt=""
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-5">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Content Recommendations</h3>
+                                    <p class="fst-italic">Discover curated content tailored to your interests and
+                                        needs.</p>
+                                    <p>Explore a wide range of informative articles, helpful resources, and expert
+                                        advice based on your preferences and requirements. Our content
+                                        recommendations aim to provide you with valuable insights, tips, and
+                                        strategies to enhance your well-being, improve mental health, and lead a
+                                        fulfilling life.</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{% static 'website/img/features/ContentRecommendations.png' %}" alt=""
+                                        class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Features Section -->
+
+
+    <!-- More sections for services, portfolio, etc. -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h1 class="flogo me-auto">
+                            <a href="{% url 'website:home' %}" class="flogo me-auto">
+                                <img src="{% static 'website/img/blacklogo2.png' %}" alt="" class="img-fluid">
+                            </a>
+                        </h1>
+                        <p>
+                            Comsats University Islamabad <br> Wah Campus
+                            Wah Cantt, Pakistan <br><br>
+                            <strong>Phone:</strong> +92 340 1417862<br>
+                            <strong>Email:</strong> info@innercalm.com<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:home' %}">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:about' %}">About us</a>
+                            </li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:services' %}">Services</a>
+                            </li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:contact' %}">Contact Us</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'accounts:login' %}">
+                                    Counseling Sessions
+                                </a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'accounts:login' %}">
+                                    Anxiety Quizzes
+                                </a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'accounts:login' %}">
+                                    Community Support
+                                </a>
+                            </li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'accounts:login' %}">
+                                    Content Recommendations
+                                </a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'accounts:login' %}">
+                                    Resource Management
+                                </a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Location</h4>
+                        <iframe style="border:0; width: 100%; height: 200px;"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13270.495268940069!2d72.7866556!3d33.7445424!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfa6bc26bfa2db%3A0x2344c019578abeac!2sCOMSATS%20University%20Islamabad%2C%20Wah%20Campus!5e0!3m2!1sen!2s!4v1711169618130!5m2!1sen!2s"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+
+            <div class="me-md-auto text-center text-md-start">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>InnerCalm</span></strong>. All Rights Reserved
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <script src="{% static 'website/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'website/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'website/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'website/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'website/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'website/js/main.js' %}"></script>
+</body>
+
+</html>

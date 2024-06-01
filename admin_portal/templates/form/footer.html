@@ -1,0 +1,152 @@
+{% load static %}
+
+
+</div>
+
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h1 class="flogo me-auto">
+                        <a href="{% url 'website:home' %}" class="flogo me-auto">
+                            <img src="{% static 'website/img/blacklogo2.png' %}" alt="" class="img-fluid">
+                        </a>
+                    </h1>
+                    <p>
+                        Comsats University Islamabad <br> Wah Campus
+                        Wah Cantt, Pakistan <br><br>
+                        <strong>Phone:</strong> +92 340 1417862<br>
+                        <strong>Email:</strong> info@innercalm.com<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:home' %}">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:about' %}">About us</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:services' %}">Services</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:services' %}">Terms of
+                                service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:services' %}">Privacy
+                                policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:indcounseling' %}">Individual
+                                Counseling</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:gtsessions' %}">Group
+                                Therapy
+                                Sessions</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:gtsessions' %}">Cognitive
+                                Behavioral Therapy (CBT)</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:gtsessions' %}">Mindfulness
+                                Meditation</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'website:gtsessions' %}">Stress
+                                Management Workshops</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Join Our Newsletter</h4>
+                    <p>Subscribe to our newsletter to receive updates and news.</p>
+                    <form action="#" method="post">
+                        <input type="email" name="email" placeholder="Your Email" required><input type="submit"
+                            value="Subscribe">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>InnerCalm</span></strong>. All Rights Reserved
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<script src="{% static 'website/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'website/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'website/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'website/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'website/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'website/js/main.js' %}"></script>
+
+
+
+<!-- START: Scripts -->
+
+<!-- Object Fit Images -->
+<script src="{% static 'vendor/object-fit-images/dist/ofi.min.js' %}"></script>
+
+<!-- Popper -->
+<script src="{% static 'vendor/popper.js/dist/umd/popper.min.js' %}"></script>
+
+<!-- Bootstrap -->
+<script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+<!-- Fancybox -->
+<script src="{% static 'vendor/fancybox/dist/jquery.fancybox.min.js' %}"></script>
+
+<!-- Cleave -->
+<script src="{% static 'vendor/cleave.js/dist/cleave.min.js' %}"></script>
+
+<!-- Validator -->
+<script src="{% static 'vendor/validator/validator.min.js' %}"></script>
+
+<!-- Sticky Kit -->
+<script src="{% static 'vendor/sticky-kit/dist/sticky-kit.min.js' %}"></script>
+
+<!-- Jarallax -->
+<script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
+<script src="{% static 'vendor/jarallax/dist/jarallax-video.min.js' %}"></script>
+
+<!-- Isotope -->
+<script src="{% static 'vendor/isotope-layout/dist/isotope.pkgd.min.js' %}"></script>
+
+<!-- ImagesLoaded -->
+<script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+
+<!-- Swiper -->
+<script src="{% static 'vendor/swiper/dist/js/swiper.min.js' %}"></script>
+
+<!-- Gist Embed -->
+<script src="{% static 'vendor/gist-embed/gist-embed.min.js' %}"></script>
+
+<!-- Bootstrap Select -->
+<script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+
+<!-- Dropzone -->
+<script src="{% static 'vendor/dropzone/dist/min/dropzone.min.js' %}"></script>
+
+<!-- Quill -->
+<script src="{% static 'vendor/quill/dist/quill.min.js' %}"></script>
+
+</body>
+
+</html>

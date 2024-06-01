@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <!-- Add your CSS links here -->
+    <link rel="stylesheet" href="{% static 'accounts/css/styles.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Logout</h1>
+        <p>You have been successfully logged out.</p>
+        <p>Return to <a href="{% url 'website:home' %}">Homepage</a></p>
+    </div>
+    <!-- Add your JavaScript links here -->
+    <script src="{% static 'accounts/js/script.js' %}"></script>
+</body>
+
+</html>
